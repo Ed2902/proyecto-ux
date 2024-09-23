@@ -1,0 +1,20 @@
+<div class="container my-5">
+    <h1 class="text-center mb-5">Editar Reserva</h1>
+
+    <form action="/reserva/edit/{{reserva.id}}" method="POST">
+        <div class="mb-3">
+            <label for="hotel_name" class="form-label">Nombre del Hotel</label>
+            <input type="text" class="form-control" id="hotel_name" name="hotel_name" value="{{reserva.hotel_name}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="location_lat" class="form-label">Latitud</label>
+            <input type="text" class="form-control" id="location_lat" name="location_lat" value="{{reserva.location_lat}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="location_lng" class="form-label">Longitud</label>
+            <input type="text" class="form-control" id="location_lng" name="location_lng" value="{{reserva.location_lng}}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="/reserva" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+<div class="container my-5">
+    <h1 class="text-center mb-5">Resultados de Hoteles</h1>
+    <div class="row">
+        {{#each hotels}}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{this.image}}" alt="Imagen de {{this.name}}" class="card-img-top hotel-image">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{this.name}}</h5>
+                    
+                    <!-- Descripción del hotel -->
+                    <p class="card-text hotel-description">{{this.description}}</p>
+
+                    <!-- Información adicional -->
+                    <p class="card-text"><strong>Tipo de propiedad:</strong> {{this.type}}</p>
+                    <p class="card-text"><strong>Ubicación:</strong> {{this.address.full}} (Lat: {{this.location.lat}}, Lng: {{this.location.lng}})</p>
+                    <p class="card-text"><strong>Calificación:</strong> {{this.rating}}/10</p>
+                    <p class="card-text"><strong>Reseñas:</strong> {{this.reviews}} reseña(s)</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{this.price}} {{this.currency}}</p>
+
+                    <!-- Formulario oculto para enviar los datos del hotel y del usuario -->
+                    <form action="/reservar" method="POST">
+                        <!-- Datos del hotel que serán enviados -->
+                        <input type="hidden" name="hotel_name" value="{{this.name}}">
+                        <input type="hidden" name="location_lat" value="{{this.location.lat}}">
+                        <input type="hidden" name="location_lng" value="{{this.location.lng}}">
+
+                        <!-- Botón para enviar el formulario -->
+                        <button type="submit" class="btn btn-primary mt-3 w-100">Reservar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-12">
+            <p class="text-center">No se encontraron hoteles.</p>
+        </div>
+        {{/each}}
+    </div>
+</div>

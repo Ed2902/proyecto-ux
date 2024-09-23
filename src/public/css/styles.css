@@ -1,0 +1,842 @@
+.nav-link {
+    color: #ffd700 !important; /* Color de texto dorado */
+    font-size: 1.2rem; /* Tamaño de fuente aumentado */
+}
+.nav-link:hover {
+    color: #e5c100 !important; /* Color al pasar el cursor */
+}
+.btn-registrarse {
+    color: #ffd700 !important;
+    border-color: #ffd700 !important;
+    font-size: 1.1rem;
+}
+.btn-registrarse:hover {
+    background-color: #ffd700 !important;
+    color: #0B97B8 !important;
+}
+.navbar-brand img {
+    width: 100px;
+    height: 80px;
+    padding: 0%;
+}
+ h2{
+    color: #867203 !important;
+ }
+
+ .act-text{
+    color: #fdfdfd !important;
+ }
+
+ .card-titulo-act{
+    color: #fdfdfd !important;
+ } 
+
+.carousel {
+    position: relative;
+}
+.carousel-caption h2 {
+    filter: drop-shadow(1px 1px 1px rgba(27, 32, 33, 0.722)); 
+    color: #fefefe !important; /* Asegúrate de que el color se aplique */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra bien marcada */
+}
+
+.carousel-caption h1 {
+    filter: drop-shadow(1px 1px 1px rgba(27, 32, 33, 0.722)); 
+    color: #fefefe !important; /* Asegúrate de que el color se aplique */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Sombra bien marcada */
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 600px; /* Asegura que el carrusel ocupe toda la altura de la pantalla */
+    object-fit: cover; /* Ajusta las imágenes para que cubran el área sin distorsión */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Añade un fondo oscuro a los íconos de navegación */
+    border-radius: 50%;
+}
+
+.carousel-control-prev-icon:after,
+.carousel-control-next-icon:after {
+    font-size: 30px;
+}
+
+
+
+@font-face {
+    font-family: 'SeoulHangangCondensed';
+    src: url('../fonts/SeoulHangangCondensed-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+body{
+    background: linear-gradient(135deg, #003768, #000428, #002e66, #0084a9);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: white; /* Ajusta el color del texto si es necesario */
+   
+}
+
+/* Animación suave del degradado */
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.container-index{
+    width: 100%;
+    height: 350px;
+}
+
+
+.busqueda-index{
+    width:60%;
+    height:120px;
+    border:dashed 5px #ffd700;
+    border-radius: 5px;
+    position: relative;
+    bottom: 250px;
+    left: 80px;
+    background-color: #ffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.busqueda-index :hover{
+    color: #867203;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.busqueda-item{
+    margin: 12px;  
+    cursor: pointer;
+}
+
+.subtitulo-item{
+    font-size: 17px;
+    padding: 10px;
+    color: #00264D;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.titulo-item{
+    text-align: center;
+    font-size: 13px;
+    color: #00264D;
+    opacity: 60%;
+}
+
+.subitem{
+    padding-top: 5px;
+}
+
+.icono-index{
+    font-size: 35px;
+    padding-right: 10px;
+    color: #00264D;
+}
+
+.busqueda-item:not(:last-child) {
+    border-right: 2px solid #0000005d;  
+    
+}
+
+.itemT{
+    margin-right: 50px;
+}
+
+.btn-buscar{
+    height: 50px;
+    width: 120px;
+    background-color: #ffd700;
+    margin-left: 70%;
+    position: absolute;
+    bottom: 90px;
+    text-align: center;
+    align-content: center;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.txt-buscar{
+    color: #ffff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+/* DROPDOWN */
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+  }
+
+ .dropdownBtn{
+    width: 200px;
+    border: none;
+    background-color: #fff;
+    outline: none;
+ } 
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 300px;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    top: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.icono-drop{
+    margin-right: 5px;
+}
+
+
+.datos-ciudad{
+    margin: 10px;
+}
+
+.dropdown-content span {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content span:hover {
+    color: #FFFFFF;
+    background-color: #00A4BD;
+}
+
+.ciudad{
+    border-bottom: #00000071 1px solid;
+    border-radius: 10px;
+}
+
+
+.text-cards{
+    width: 100%;
+    height: 700px;
+    color: #000;
+}
+
+.sec-text{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.sec-titulo{
+    font-size: 40px;
+    color: #ffd700 !important;
+}
+
+.sec-cards{
+    width: 100%;
+    height: 520px;
+    margin-top: 80px;
+}
+
+.card{
+    width: 350px;
+    height: 90%;
+    margin: 30px;
+    border-radius: 30px;
+    background-color: #E3EBF3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-img{
+    width: 100%;
+    height: 60%;
+    
+}
+
+.img-card{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.card-text{
+    margin: 10px 15px;
+    font-weight: bold;
+}
+
+.flex-card{
+    display: flex;
+}
+
+.card-titulo{
+    margin-left: 5px;
+    font-size: 15px;
+    
+}
+
+.cal-card{
+    background: linear-gradient(135deg, #004e92, #000428, #0072ff, #00c6ff);
+    padding: 5px;
+    border-radius: 10px;
+    font-weight:550;
+}
+
+.card-subtitulo{
+    font-size: 15px;
+    font-weight: bold;
+    align-content: center;
+    margin: auto;
+}
+
+.btn-card{
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    background-color: #ffd700;
+    width: 70%;
+    text-decoration: none;
+    color: #000;
+    font-weight: bolder;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.sec2{
+    width: 100%;
+    height: 680px;
+    margin-top: 50px;
+    padding: 40px;
+}
+
+.gal-flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Define dos columnas iguales */
+    gap: 10px;  /* Espacio entre las columnas */
+     /* Asegura que ambas columnas ocupen la misma altura */
+}
+
+.img-sec2,
+.img1-sec2 {
+    display: block;
+    height: 50%;  /* Asegura que ocupen la altura total disponible */
+}
+
+.img-sec2 img {
+    width: 100%;
+    height: 90%; 
+    object-fit: cover;  
+    border-radius: 30px;
+}
+
+.img1-sec2 img {
+    width: 100%;
+    padding-bottom: 10px;
+    height: 45%;  
+    object-fit: cover;  
+    border-radius: 30px;
+}
+
+.gal-text{
+    position: relative;
+    bottom: 90px;
+    padding: 0 15px;
+    margin: auto;
+    color: #ffff;
+}
+
+.gal-text1{
+    position: relative;
+    bottom: 260px;
+    padding: 0 15px;
+    margin: auto;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.sec-actividades{
+    margin-top: 50px;
+}
+
+.act-sec{
+    height: 70px;
+    border: #0B97B8 solid 2px;
+    padding: 5px 20px;
+    border-radius: 40px;
+    background-color: #0b98b848;
+    margin-left: 30px;
+
+}
+
+.act-img{
+    width: 60px;
+}
+
+.act-text{
+    font-size: 15px;
+    margin: auto 0;
+    color: #095668;
+}
+
+.act-titulo{
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.act-subtitulo{
+    font-size: 18px;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.act-card{
+    margin-top: 50px;
+    width: 200px;
+    height: 300px;
+    border: #000 solid 1px;
+}
+
+.acti-card{
+    height: 50%;
+}
+
+.img-card-act{
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.sec-cards-act{
+    width: 100%;
+    height: 350px;
+    margin-top: 30px;
+}
+
+.card-act{
+    width: 350px;
+    height: 90%;
+    margin: 30px;
+    border-radius: 30px;
+
+}
+
+.img-card-act{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-titulo-act{
+    font-size: 18px;
+    opacity: 0.5;    
+}
+
+.beneficios{
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.bene-card{
+    width: 300px;
+    height: 100px;
+    border: #050f59 solid 2px;
+    border-radius: 20px;
+    display: flex;
+    color: #000;
+
+}
+
+.flex-card-bene{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bene-img{
+    height: 100%;
+    height: 100px;
+    padding: 15px;
+}
+
+.bene-text{
+    font-size: 20px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* MODAL CALENDRIO */
+.modal {
+    display: none; 
+    position: absolute; 
+    z-index: 1; 
+    left: 610px;
+    top: 310px;
+    width: 100vh;
+    height: 800px;
+    overflow: hidden;
+    
+  }
+  
+  .modal-contenido{
+    background-color:#000428;
+    margin: 30% auto; 
+    padding: 5px;
+    width: 80%;
+    max-width: 450px;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .calendario{
+    width: 350px;
+    background-color:#000428;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  .calenHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000428;
+  }
+
+  .calenHeader button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .dias-sem {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+  }
+
+  .calenBody{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #000428;
+  }
+
+  .calenDay{
+    border-radius:50%;
+    padding: 8px 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    margin: 2px;
+    background-color: #000428;
+  }
+
+  .calenDay:hover{
+    background-color:#030e3b !important;
+    transition: background-color 0.3s ease;
+  }
+
+  .calenDay.selected{
+    border: 3px solid #ffd700;
+  }
+
+  .calenDay.range{
+    background-color: #030e3b;
+  }
+
+  #prevbtn, #nextbtn{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin:0 10px 0 10px;
+    border-radius: 50%;
+    background-color: #2036fb;
+  }
+
+  #prevbtn:hover{
+    background-color: #ddd !important;
+    transition: background-color 0.3s ease;
+  }
+
+  #nextbtn:hover{
+    background-color: #ddd !important;
+    transition: background-color 0.3s ease;
+  }
+
+  #FechaSeleccionada{
+    font-family: 'Poppins';
+  }
+
+  #mesActual{
+    font-family:'Poppins';
+    font-size:18px;
+  }
+
+  /* MODAL HUESPEDES */
+
+  .flex-huesped{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .huesped{
+    margin-top: 10px;
+  }
+
+  .text-huesped{
+    font-size: 17px;
+    align-content: center;
+    margin: 0;
+    color: #00264D;
+    font-weight: bold;
+  }
+
+  .cont-huesped{
+    font-size: 20px;
+    margin: 10px 10px;
+    align-content: center;
+    color: #00264D;
+    width: 50px;
+    text-align: center;
+    border: #00000056 solid 1px;
+    border-radius: 10px;
+  }
+
+  .icono-huesped{
+    padding-top: 7px;
+    font-size: 38px;
+    align-content: center;
+    cursor: pointer;
+    color: #bd8100;
+  }
+
+
+
+/* Footer */
+.footer{
+    width: 100%;
+    height: 200px;
+    background-color: #0B97B8;
+    margin-top: 50px;
+    display: flex;
+}
+
+.cont-footer{
+    width: 70%;
+    padding: 20px;
+}
+
+.text-footer{
+    color: #fff;
+    font-size: 20px;
+}
+
+.text2-footer{
+    position: relative;
+    top: 30px;
+    font-size: 15px;
+    padding-left: 250px;
+    color: #000;
+}
+
+.icon{
+    display: flex;
+    justify-content: end;
+}
+
+.icons{
+    font-size: 40px;
+    margin: 10px;
+}
+
+.input-footer{
+    text-decoration: none;
+    border: 0;
+    border-bottom: #ffff 3px solid;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 400px;
+    height: 30px;
+    background-color: #0B97B8;
+    outline: none;
+}
+
+input::placeholder {
+    color: #00264D; 
+    opacity: 1;  
+}
+
+.btn-footer{
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 150px;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffff;
+    border-radius: 8px;
+}
+
+
+/**************lista hoteles ****/
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-family: 'SeoulHangang CB', sans-serif;
+    color: #007bff;
+}
+
+.card-title {
+    color: #333;
+}
+
+/* Limitar descripción a 6 líneas */
+.hotel-description .short-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Limitar a 6 líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ocultar inicialmente la descripción completa */
+.hotel-description .full-description {
+    display: none;
+}
+
+/* Estilos del botón "Ver más" */
+.show-more {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.show-more:hover {
+    text-decoration: underline;
+}
+
+/* Asegúrate de que todo el texto en .card-text no esté en negrita */
+.card-text {
+    font-weight: normal; /* Texto sin negrita */
+    color: #555; /* Un color gris suave para el texto */
+}
+/* Estilos para las imágenes de los hoteles */
+.hotel-image {
+    max-width: 100%;     /* Asegura que la imagen nunca sobrepase el ancho de su contenedor */
+    max-height: 200px;   /* Establece una altura máxima para las imágenes */
+    object-fit: cover;   /* Asegura que las imágenes se escalen correctamente sin deformarse */
+    border-radius: 8px;  /* Un ligero redondeo en las esquinas de la imagen */
+    margin-bottom: 15px;
+}
+
+
+/* La descripción será truncada a 6 líneas */
+.hotel-description .short-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Limitar a 6 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Ocultar la descripción completa hasta que se haga clic en "Ver más" */
+.hotel-description .full-description {
+    display: none;
+}
+
+/* El nombre del hotel debe estar en negrita */
+.card-title {
+    font-weight: bold;
+    font-size: 1.5rem; /* Tamaño del texto del nombre */
+}
+
+/* Botón "Ver más" para descripción */
+.show-more {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.show-more:hover {
+    text-decoration: underline;
+}
+
+/* Para asegurar que las otras secciones no estén en negrita */
+.not-bold {
+    font-weight: normal; /* Asegura que estas partes no estén en negrita */
+}
+
+/*******************login******************/
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    margin-top:5%;
+    width: 400px;
+    height: 350px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(5, 32, 167, 0);
+    border-radius: 10px;
+}
+
+/*******************Registro******************/
+
+.persona-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.persona-form {
+    margin-top: 5%;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(5, 32, 167, 0);
+    border-radius: 10px;
+}
+/*****************mapa**********/
+

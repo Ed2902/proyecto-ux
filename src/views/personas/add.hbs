@@ -1,0 +1,77 @@
+<div class="persona-container">
+    <form class="persona-form" id="addPersonaForm">
+        <h1 style="color: #867203;">Agregar Persona</h1>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Ejemplo: Luis Angel" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="lastname" class="form-label">Apellido</label>
+                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Ejemplo: Fernandez" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="age" class="form-label">Edad</label>
+                <input class="form-control" type="number" name="age" id="age" placeholder="Ejemplo: 30" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="FK_tipopersona" class="form-label">Tipo de Persona</label>
+                <select class="form-select" name="FK_tipopersona" id="FK_tipopersona" required>
+                    <option value="1">Administrativo</option>
+                    <option value="2">Docente</option>
+                    <option value="3">Estudiante</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3 mx-auto">
+                <label for="password" class="form-label">Contraseña</label>
+                <input class="form-control" type="password" name="password" id="password" required>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success w-50">Guardar Persona</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.getElementById('addPersonaForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevenir la recarga de la página
+
+        // Recoger los datos del formulario y convertirlos en JSON
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            // Enviar los datos al servidor usando fetch
+            const response = await fetch('/personas/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) { // Verifica si la respuesta fue exitosa (2xx)
+                const result = await response.json();
+
+                if (result.success) {
+                    // Mostrar un alert de éxito
+                    alert('Guardado con éxito');
+                    // Redirigir a la página principal
+                    window.location.href = '/';
+                } else {
+                    // Mostrar un alert de error
+                    alert('Error: ' + result.message);
+                }
+            } else {
+                alert('Error en la solicitud: ' + response.statusText);
+            }
+        } catch (error) {
+            console.error('Error al enviar la solicitud:', error);
+            alert('Error al guardar la persona: ' + error.message);
+        }
+    });
+</script>

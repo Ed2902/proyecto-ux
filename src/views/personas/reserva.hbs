@@ -1,0 +1,37 @@
+<div class="container my-5">
+    <h1 class="text-center mb-5">Mapa de Reservas</h1>
+
+    {{#if message}}
+        <p class="text-center">{{message}}</p>
+    {{else}}
+        <div id="map" style="height: 400px; width: 100%;"></div>
+
+        <h2 class="mt-4">Detalles de Reservas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre del Hotel</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Distancia desde tu ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each reservas}}
+                    <tr>
+                        <td>{{this.hotel_name}}</td>
+                        <td>{{this.location_lat}}</td>
+                        <td>{{this.location_lng}}</td>
+                        <td class="distance" data-lat="{{this.location_lat}}" data-lng="{{this.location_lng}}"></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <p id="myLocation"></p>
+
+        <script>
+            const reservas = {{{json reservas}}};
+        </script>
+    {{/if}}
+</div>
