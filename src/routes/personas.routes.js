@@ -46,14 +46,16 @@ router.get('/personas/list', async (req, res) => {
 
 
 
-router.get('/list', async(req, res)=>{
-    try{
-        const [result] = await pool.query('SELECT personas.id ,personas.name, personas.lastname,personas.age, tipopersona.Nombre FROM personas INNER JOIN tipopersona on tipopersona.ID = personas.FK_tipopersona');
-        res.render('personas/list', {showNav: true, showFooter: true, personas: result})
-    }catch(err){
-        res.status(500).json({message:err.message});
+router.get('/list', async(req, res) => {
+    try {
+        // Llamada al procedimiento almacenado GetPersonas
+        const [result] = await pool.query('CALL GetPersonas()');
+        res.render('personas/list', { showNav: true, showFooter: true, personas: result[0] });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 });
+
 
 /*******************editar **************** */
 router.get('/edit/:id', async (req, res) => {
@@ -108,17 +110,24 @@ router.post('/edit/:id', async (req, res) => {
 });
 
 /*******************end editar **************** */
-
-router.get('/delete/:id', async(req, res)=>{
+/******************* eliminar usuario  **************** */
+router.get('/delete/:id', async (req, res) => {
     try {
-        const{id} = req.params;
-        await pool.query('DELETE FROM personas WHERE id = ?', [id]);
+        const { id } = req.params;
+
+        // Llamar al procedimiento almacenado para eliminar a la persona
+        await pool.query('CALL DeletePersonByID(?)', [id]);
+
+        // Redirigir de vuelta a la lista una vez completada la eliminación
         res.redirect('/list');
     } catch (err) {
-        res.status(500).json({message:err.message});
+        // Manejo de errores
+        console.error('Error al eliminar la persona:', err.message);
+        res.status(500).json({ message: 'Ocurrió un error al eliminar la persona.' });
     }
 });
-
+/*******************end eliminar usuario **************** */
+/*******************validad usuario en la base de datos **************** */
 export default router;
 
 router.post('/login', async (req, res) => {
@@ -151,7 +160,9 @@ router.get('/logout', (req, res) => {
         res.redirect('/login');  // Redirigir al login después de cerrar sesión
     });
 });
-/******************reserva */
+
+/*******************end validad usuario en la base de datos **************** */
+/******************reserva *********************/
 
 router.post('/reservar', async (req, res) => {
     try {
@@ -163,14 +174,14 @@ router.post('/reservar', async (req, res) => {
         }
 
         // Obtener el ID del usuario desde la sesión
-        const userId = req.session.user_id;  // ID del usuario
+        const userId = req.session.user_id;
 
-        // Insertar los datos en la tabla de reservas
-        await pool.query('INSERT INTO reservas (FK_persona, hotel_name, location_lat, location_lng) VALUES (?, ?, ?, ?)', 
+        // Llamar al procedimiento 
+        await pool.query('CALL InsertReservation(?, ?, ?, ?)', 
             [userId, hotel_name, location_lat, location_lng]);
 
         // Redirigir a la página de confirmación o mostrar un mensaje
-        res.redirect('/reserva');  // Redirige a una página de confirmación de reserva
+        res.redirect('/reserva');
     } catch (err) {
         console.error('Error al realizar la reserva:', err);
         res.status(500).send('Error al procesar la reserva');
@@ -185,8 +196,8 @@ router.get('/reserva', async (req, res) => {
             return res.redirect('/login');  // Redirigir si no ha iniciado sesión
         }
 
-        // Obtener las reservas del usuario autenticado
-        const [reservas] = await pool.query('SELECT hotel_name, location_lat, location_lng FROM reservas WHERE FK_persona = ?', [req.session.user_id]);
+        // Llamar al procedimiento almacenado para obtener las reservas del usuario
+        const [reservas] = await pool.query('CALL GetUserReservations(?)', [req.session.user_id]);
 
         // Verificar si hay reservas
         if (reservas.length === 0) {
@@ -194,32 +205,64 @@ router.get('/reserva', async (req, res) => {
         }
 
         // Renderizar la vista reserva.hbs con los datos de reservas
-        res.render('personas/reserva', { reservas, showNav: true });
+        res.render('personas/reserva', { reservas: reservas[0], showNav: true });
     } catch (err) {
         console.error('Error al obtener reservas:', err);
         res.status(500).send('Error al procesar las reservas');
     }
 });
 
-// Ruta para editar una reserva (GET)
-router.get('/reserva/edit/:id', async (req, res) => {
+/********eliminar reserva con trigger */
+
+// Ruta para eliminar una reserva específica
+router.get('/reserva', async (req, res) => {
     try {
-        const { id } = req.params;
-
-        // Obtener los datos de la reserva a editar
-        const [reserva] = await pool.query('SELECT * FROM reservas WHERE id = ?', [id]);
-
-        if (reserva.length === 0) {
-            return res.status(404).send('Reserva no encontrada.');
+        // Verificar si el usuario ha iniciado sesión
+        if (!req.session.user_id) {
+            return res.redirect('/login');  // Redirigir si no ha iniciado sesión
         }
 
-        // Renderiza la vista de edición con los datos de la reserva
-        res.render('personas/editarReserva', { reserva: reserva[0], showNav: true });
+        // Obtener las reservas del usuario autenticado
+        const [reservas] = await pool.query('CALL GetUserReservations(?)', [req.session.user_id]);
+
+        // Verificar si hay reservas
+        if (reservas.length === 0) {
+            return res.render('personas/reserva', { message: 'No tienes reservas aún.', showNav: true });
+        }
+
+        // Renderizar la vista con las reservas, asegurando que cada reserva tenga un ID
+        res.render('personas/reserva', { reservas: reservas[0], showNav: true });
     } catch (err) {
-        console.error('Error al obtener la reserva:', err);
-        res.status(500).send('Error al procesar la solicitud.');
+        console.error('Error al obtener reservas:', err);
+        res.status(500).send('Error al procesar las reservas');
     }
 });
+
+
+router.get('/reserva/delete/:id', async (req, res) => {
+    try {
+        // Verificar si el usuario ha iniciado sesión
+        if (!req.session.user_id) {
+            return res.redirect('/login');  // Redirigir si no ha iniciado sesión
+        }
+
+        const { id } = req.params;  // Obtener el ID de la reserva desde la URL
+        const userId = req.session.user_id;  // Obtener el ID del usuario desde la sesión
+
+        // Llamar al procedimiento almacenado para eliminar la reserva por su ID
+        await pool.query('CALL DeleteReservationByID(?, ?)', [id, userId]);
+
+        // Redirigir de vuelta a la página de reservas después de la eliminación
+        res.redirect('/reserva');
+    } catch (err) {
+        console.error('Error al eliminar la reserva:', err);
+        res.status(500).send('Error al eliminar la reserva');
+    }
+});
+
+
+
+
 
 
 

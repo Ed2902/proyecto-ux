@@ -76,7 +76,7 @@ app.get('/', async (req, res) => {
 
 import { ApifyClient } from 'apify-client';
 const client = new ApifyClient({
-    token: 'apify_api_zQdcXdiP4QYoOtsicWBOsvNjppmaNw3zk9EW',
+    token: 'apify_api_tFqlYmaofGY7Q2ARYUhDQHGcf7zWck3CnPwY',/* apify_api_zQdcXdiP4QYoOtsicWBOsvNjppmaNw3zk9EW */
 });
 
 async function BookingScraper(checkIn, checkOut, search, adults, children, rooms) {
@@ -88,7 +88,7 @@ async function BookingScraper(checkIn, checkOut, search, adults, children, rooms
             children,
             currency: "COP",
             language: "es",
-            maxItems: 10,
+            maxItems: 1,
             minMaxPrice: "0-999999",
             rooms,
             search,
