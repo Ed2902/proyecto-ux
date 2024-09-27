@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword 
+      MYSQL_DATABASE: viatge_bd  
+      MYSQL_USER: usuario  
+      MYSQL_PASSWORD: contrasena  
+    volumes:
+      - ./data/mysql:/var/lib/mysql  
+      - ./viatge_bd.sql:/docker-entrypoint-initdb.d/1_viatge_bd.sql  
+      - ./procedimientos almacenados travel.sql:/docker-entrypoint-initdb.d/2_procedimientos.sql 
+      - ./Trigrees almacenados travel.sql:/docker-entrypoint-initdb.d/3_triggers.sql  
+    ports:
+      - "3306:3306"  
+    networks:
+      - db-network
+
+
+#add php my admin 
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin  
+    container_name: phpmyadmin  
+    environment:
+      PMA_HOST: db  
+      MYSQL_ROOT_PASSWORD: rootpassword  
+    ports:
+      - "8080:80"  
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    driver: bridge

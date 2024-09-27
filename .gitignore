@@ -1,0 +1,26 @@
+# Ignorar la carpeta de MySQL (datos generados por Docker)
+data/mysql/
+
+# Ignorar el archivo de entorno (contiene variables sensibles)
+.env
+
+# Ignorar los módulos de Node.js (pueden ser instalados con `npm install`)
+node_modules/
+
+# Ignorar los archivos de bloqueo de dependencias específicas del sistema
+package-lock.json
+
+# Ignorar otros archivos relacionados con certificados, logs, binarios de MySQL
+*.pem
+*.cnf
+*.log
+*.dblwr
+*.index
+*.binlog*
+
+# Ignorar archivos específicos de VSCode
+.vscode/
+
+# Ignorar directorios y archivos de sistema
+.DS_Store
+Thumbs.db
