@@ -21,9 +21,7 @@
                     <td>{{Nombre}}</td>
                     <td>
                         <div class="btn-group">
-                            <!-- Botón de edición -->
                             <a href="/edit/{{id}}" class="btn btn-warning p-2"><i class="fa-solid fa-pencil"></i></a>
-                            <!-- Botón de eliminación con confirmación -->
                             <a href="javascript:void(0);" onclick="confirmDelete('{{id}}')" class="btn btn-danger p-2">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
@@ -52,12 +50,12 @@
     {{/if}}
 </div>
 
-<!-- Script para la confirmación de eliminación -->
+
 <script>
     function confirmDelete(id) {
-        // Mostrar una alerta de confirmación
+        
         if (confirm('¿Estás seguro de que quieres eliminar esta persona?')) {
-            // Si el usuario confirma, redirigir al enlace de eliminación
+           
             window.location.href = '/delete/' + id;
         }
     }

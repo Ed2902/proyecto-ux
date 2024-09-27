@@ -14,7 +14,7 @@
                     <th>Latitud</th>
                     <th>Longitud</th>
                     <th>Distancia desde tu ubicación</th>
-                    <th>Acciones</th> <!-- Nueva columna para los botones de acción -->
+                    <th>Acciones</th> 
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                         <td>{{this.location_lng}}</td>
                         <td class="distance" data-lat="{{this.location_lat}}" data-lng="{{this.location_lng}}"></td>
                         <td>
-                            <!-- Botón para eliminar la reserva específica -->
+                    
                             <a href="javascript:void(0);" onclick="confirmDelete('{{this.id}}')" class="btn btn-danger">
                                 Eliminar
                             </a>
@@ -40,9 +40,9 @@
         <script>
             const reservas = {{{json reservas}}};
 
-            // Confirmación antes de eliminar
+         
             function confirmDelete(id) {
-                console.log('ID de la reserva:', id);  // Verifica que el ID de la reserva esté siendo capturado
+                console.log('ID de la reserva:', id);  
                 if (confirm('¿Estás seguro de que quieres eliminar esta reserva?')) {
                     window.location.href = '/reserva/delete/' + id;
                 }

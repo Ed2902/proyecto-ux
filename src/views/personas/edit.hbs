@@ -6,7 +6,6 @@
                     <h3 class="text-uppercase">EDITANDO UNA PERSONA</h3>
                 </div>
                 <div class="card-body">
-                    <!-- El action debe apuntar a la ruta POST con el ID de la persona -->
                     <form action="/edit/{{persona.id}}" method="post">
                         <div class="input-group mt-2">
                             <label for="name" class="input-group-text">Nombre</label>
@@ -22,11 +21,10 @@
                         </div>
                         <div class="input-group mt-2">
                             <label for="FK_tipopersona" class="input-group-text">Tipo Persona</label>
-                            <!-- Aquí iteramos sobre tiposPersona para llenar el select -->
                             <select id="tipoPersona" class="form-select" name="FK_tipopersona" required>
                                 {{#each tiposPersona}}
                                     <option value="{{this.ID}}" {{#ifCond this.ID ../persona.FK_tipopersona}}selected{{/ifCond}}>
-                                        {{this.Nombre}} <!-- Solo el nombre se muestra en la opción -->
+                                        {{this.Nombre}} 
                                     </option>
                                 {{/each}}
                             </select>
